@@ -6,11 +6,7 @@
     "configurations": [
         {
             "args": [
-                "--timeout",
-                "10000",
-                "--colors",
-                "${workspaceFolder}/test",
-                "--exit"
+                "-r dotenv/config"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "name": "Mocha Tests",

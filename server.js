@@ -93,6 +93,37 @@ router.route('/testcollection')
         res.json(o);
     }
     );
+
+
+router.route('/movies')
+    .get((req, res) => {
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'GET movies';
+        res.status(200).json(o);
+    })
+
+    .post((req, res) => {
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'movie saved';
+        res.status(200).json(o);
+    })
+    
+    .put(authJwtController.isAuthenticated, (req, res) => {
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'movie updated';
+        res.status(200).json(o);
+    })
+    
+    .delete(authController.isAuthenticated, (req, res) => {
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'movie deleted';
+        res.status(200).json(o);
+    });
+
     
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
